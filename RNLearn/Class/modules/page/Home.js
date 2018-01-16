@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         backgroundColor:'white'
     },
     itemView:{
-        width:width,
+        width:ScreenWidth,
         height:50,
         justifyContent:'center',
         borderColor:'#f0f0f0',

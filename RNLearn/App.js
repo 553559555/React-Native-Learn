@@ -11,6 +11,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import Global from './Class/modules/Global/global';
 
 //注册页面
 import Home from './Class/modules/page/Home';
@@ -45,7 +46,7 @@ const MainTabbar = TabNavigator({
   Me:{
     screen:Me,
     navigationOptions:{
-      title:'我的',
+      title:'个人中心',
       tabBarIcon:({focused}) => {
         if (focused) {
           return (
@@ -63,16 +64,16 @@ const MainTabbar = TabNavigator({
   //设置TabBar属性
   tabBarOptions: {
     //设置文字选中颜色
-    activeTintColor: 'black',
+    activeTintColor: '#FF34B3',
     //设置文字默认颜色
-    inactiveTintColor:'#a0a0a0',
+    inactiveTintColor:'#EE9A00',
     //设置文字大小
     labelStyle:{
       fontSize:12,
     },
     //设置TabBar背景颜色
     style:{
-      backgroundColor:'#e0e0e0'
+      backgroundColor:'#AEEEEE'
     }
   },
 });
@@ -85,6 +86,14 @@ const RNLearnApp = StackNavigator({
     screen:FlexBox,
     navigationOptions:{
       title:'我是FlexBox',
+    }
+  }
+},{
+  navigationOptions:{
+    //头部样式
+    headerStyle:{
+      //设置NavigationBar颜色
+      backgroundColor:'#AEEEEE'
     }
   }
 });
