@@ -26,7 +26,15 @@ export default class Me extends Component {
                     <Image style={styles.iconImage} source={iconImage}/>
                     <View style={styles.nameContainer}>
                         <Text style={styles.name}>海峰眷恋的沙</Text>
-                        <Text style={{color:'#9400D3',marginLeft:5,fontSize:12}}>Vip 6</Text>
+                        <Text style={{color:'#9400D3',marginLeft:5,fontSize:12}}>Vip 8</Text>
+                    </View>
+                </View>
+                <View style={{width:ScreenWidth,height:50,flexDirection:'row'}}>
+                    <View style={{backgroundColor:'red', flex:1}}>
+
+                    </View>
+                    <View style={{backgroundColor:'orange', flex:1}}>
+
                     </View>
                 </View>
                 <View style={styles.itemView}>

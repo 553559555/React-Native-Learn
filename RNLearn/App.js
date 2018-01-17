@@ -17,6 +17,8 @@ import Global from './Class/modules/Global/global';
 import Home from './Class/modules/page/Home';
 import Me from './Class/modules/Me/Me';
 import FlexBox from './Class/modules/page/FlexBox';
+import FlatListView from './Class/modules/page/FlatListView';
+import RNWebView from './Class/modules/page/RNWebView';
 
 //图片路径
 var HomeNorImage = require('./src/tab_icon_news_nor.png');
@@ -86,6 +88,18 @@ const RNLearnApp = StackNavigator({
     screen:FlexBox,
     navigationOptions:{
       title:'我是FlexBox',
+    }
+  },
+  FlatListView:{
+    screen:FlatListView,
+    navigationOptions:{
+      title:'FlatList',
+    }
+  },
+  RNWebView:{
+    screen:RNWebView,
+    navigationOptions:{
+      title:'WebView',
     }
   }
 },{
