@@ -21,11 +21,13 @@ export default class FlatListView extends Component {
         };
     }
 
+    //页面初始化完毕后开始网络请求
     componentDidMount() {
         this.getListData();
         this.getBannerData();
     }
 
+    //获取列表数据
     async getListData() {
         fetch('http://cjc.neoby.com:8085//app/product/list.jhtml')
             .then((response) => response.json())
@@ -39,6 +41,7 @@ export default class FlatListView extends Component {
             })
     }
 
+    //获取banner数据
     async getBannerData() {
         fetch('http://cjc.neoby.com:8085/app/ad_position/carousel.jhtml')
             .then((response) => response.json())
@@ -52,12 +55,16 @@ export default class FlatListView extends Component {
             })
     }
 
+    //item点击事件
     itemonPress(data) {
+        //跳转附带参数
         this.props.navigation.navigate('RNWebView',{content:data});
     };
 
+    //item样式
     _renderItem = ({item}) => {
           return (
+              //点击事件
               <TouchableOpacity activeOpacity={1} onPress={() => {this.itemonPress(item.introduction)}}>
                   <View style={styles.itemContainer}>
                       <Image style={styles.itemImage} source={{uri:item.image}} resizeMode="cover"/>
@@ -67,6 +74,7 @@ export default class FlatListView extends Component {
           )
     };
 
+    //头部样式
     _renderHeader = () => {
         return (
             <View style={{width:ScreenWidth,height:150,backgroundColor:'#008B00'}}>
@@ -81,14 +89,14 @@ export default class FlatListView extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {this.state.dataSource == null
-                    ? <Text>网络错误</Text>
-                    : <FlatList style={styles.container}
+                {this.state.dataSource == null                              //判断数据是否为空
+                    ? <Text style={{fontSize:20}}>网络错误</Text>
+                    : <FlatList style={{flex:1, backgroundColor:'white'}}
                                 data={this.state.dataSource}
                                 renderItem={this._renderItem}
                                 keyExtractor={(item,index) => item.id}
-                                numColumns={2}
-                                ListHeaderComponent={this._renderHeader}
+                                numColumns={2}                              //每行展示几个item
+                                ListHeaderComponent={this._renderHeader}    //返回头部视图
                       />
                 }
             </View>
@@ -99,7 +107,9 @@ export default class FlatListView extends Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor:'white'
+        backgroundColor:'white',
+        justifyContent:'center',
+        alignItems:'center'
     },
     itemContainer:{
         width: ScreenWidth/ 2,
