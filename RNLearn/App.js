@@ -19,6 +19,8 @@ import Me from './Class/modules/Me/Me';
 import FlexBox from './Class/modules/page/FlexBox';
 import FlatListView from './Class/modules/page/FlatListView';
 import RNWebView from './Class/modules/page/RNWebView';
+import ShopView from './Class/modules/page/ShopView';
+import NewView from './Class/modules/page/NewView';
 
 //图片路径
 var HomeNorImage = require('./src/tab_icon_news_nor.png');
@@ -100,6 +102,18 @@ const RNLearnApp = StackNavigator({
     screen:RNWebView,
     navigationOptions:{
       title:'WebView',
+    }
+  },
+  ShopView:{
+    screen:ShopView,
+    navigationOptions:{
+      title:'商城',
+    }
+  },
+  NewView:{
+    screen:NewView,
+    navigationOptions:{
+      title:'新闻',
     }
   }
 },{

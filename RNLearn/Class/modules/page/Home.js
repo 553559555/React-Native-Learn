@@ -24,7 +24,7 @@ export default class Home extends Component {
 
     constructor(props) {
         super(props);
-        let dataArray = [{id:0,title:'FlexBox布局'},{id:1,title:'FlatList'}];
+        let dataArray = [{id:0,title:'FlexBox布局'},{id:1,title:'玉展示页面'},{id:2,title:'商城页面'},{id:3,title:'新闻页面'}];
         //创建数据源
         this.state = {
             dataSource:dataArray,
@@ -53,7 +53,10 @@ export default class Home extends Component {
                 this.props.navigation.navigate('FlatListView');
                 break;
             case 2:
-
+                this.props.navigation.navigate('ShopView');
+                break;
+            case 3:
+                this.props.navigation.navigate('NewView');
                 break;
             default:
         }

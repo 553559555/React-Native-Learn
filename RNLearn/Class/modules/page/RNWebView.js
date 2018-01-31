@@ -3,8 +3,12 @@ import {
     View,
     StyleSheet,
     Text,
-    WebView
+    WebView,
+    Dimensions
 } from 'react-native';
+
+import Log from 'react-native-log';
+let {width,height} = Dimensions.get('window');
 
 export default class RNWebView extends Component {
 
@@ -17,6 +21,7 @@ export default class RNWebView extends Component {
     }
 
     componentDidMount() {
+        Log.i(this.state.content);
     }
 
     render() {
@@ -24,7 +29,7 @@ export default class RNWebView extends Component {
         var html='<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="format-detection" content="telephone=no"><meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" /><title></title></head><body>'+this.state.content+'</body></html>';
         return(
             <View style={styles.container}>
-                <WebView style={styles.container} source={{html:html,baseUrl:''}}/>
+                <WebView style={styles.content} source={{html:html,baseUrl:''}}/>
             </View>
         )
     }
@@ -35,6 +40,6 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'white'
-    }
+    },
 
 });
