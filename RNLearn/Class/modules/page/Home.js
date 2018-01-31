@@ -24,7 +24,7 @@ export default class Home extends Component {
 
     constructor(props) {
         super(props);
-        let dataArray = [{id:0,title:'FlexBox布局'},{id:1,title:'玉展示页面'},{id:2,title:'商城页面'},{id:3,title:'新闻页面'}];
+        let dataArray = [{id:0,title:'FlexBox布局'},{id:1,title:'展示页面布局'},{id:2,title:'商城页面布局'},{id:3,title:'新闻页面布局'}];
         //创建数据源
         this.state = {
             dataSource:dataArray,

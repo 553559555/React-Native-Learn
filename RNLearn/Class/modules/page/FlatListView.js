@@ -90,7 +90,7 @@ export default class FlatListView extends Component {
         return (
             <View style={styles.container}>
                 {this.state.dataSource == null                              //判断数据是否为空
-                    ? <Text style={{fontSize:20}}>网络错误</Text>
+                    ? <Text style={{fontSize:20}}>数据加载中...</Text>
                     : <FlatList style={{flex:1, backgroundColor:'white'}}
                                 data={this.state.dataSource}
                                 renderItem={this._renderItem}
