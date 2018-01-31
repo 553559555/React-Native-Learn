@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     itemImage:{
-        width: ScreenWidth / 2 - 20,
+        width: ScreenWidth / 2 - 20,   
         height: ScreenWidth / 2 - 20,
         backgroundColor:'cyan'
     },
