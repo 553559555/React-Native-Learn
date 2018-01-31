@@ -15,9 +15,9 @@ export default class ShopView extends Component {
     constructor(props) {
         super(props);
         var array = [
-            {data:[[{title:'我是第一个', id:0},{title:'我是第二个',id:1},{title:'我是第三个',id:2},{title:'我是第四个',id:3}]], id:0, title:'我是第一组'},
-            {data:[[{title:'我是第一个', id:0},{title:'我是第二个',id:1},{title:'我是第三个',id:2},{title:'我是第四个',id:3}]], id:1, title:'我是第二组'},
-            {data:[[{title:'我是第一个', id:0},{title:'我是第二个',id:1},{title:'我是第三个',id:2},{title:'我是第四个',id:3}]], id:2, title:'我是第三组'},
+            {data:[[{title:'中长款羽绒服', id:0, image:'https://img.alicdn.com/imgextra/i1/3075307584/TB2eg00mRDH8KJjy1zeXXXjepXa_!!3075307584-0-daren.jpg_300x300.jpg'},{title:'高跟鞋',id:1,image:'https://img.alicdn.com/imgextra/i4/261832618/TB2flJlmSYH8KJjSspdXXcRgVXa_!!261832618-0-beehive-scenes.jpg_300x300.jpg'},{title:'英伦切尔西靴',id:2, image:'https://img.alicdn.com/imgextra/i2/2564660119/TB22vm4bPb.heNjSZFAXXchKXXa_!!2564660119-0-beehive-scenes.jpg_300x300.jpg'},{title:'艺术茶盘',id:3, image:'https://img.alicdn.com/imgextra/i2/2544775745/TB22MpBmJzJ8KJjSspkXXbF7VXa_!!2544775745-2-beehive-scenes.png_300x300.jpg'}]], id:0, title:'热门推荐'},
+            {data:[[{title:'中长款羽绒服', id:0, image:'https://img.alicdn.com/imgextra/i1/3075307584/TB2eg00mRDH8KJjy1zeXXXjepXa_!!3075307584-0-daren.jpg_300x300.jpg'},{title:'高跟鞋',id:1,image:'https://img.alicdn.com/imgextra/i4/261832618/TB2flJlmSYH8KJjSspdXXcRgVXa_!!261832618-0-beehive-scenes.jpg_300x300.jpg'},{title:'英伦切尔西靴',id:2, image:'https://img.alicdn.com/imgextra/i2/2564660119/TB22vm4bPb.heNjSZFAXXchKXXa_!!2564660119-0-beehive-scenes.jpg_300x300.jpg'},{title:'艺术茶盘',id:3, image:'https://img.alicdn.com/imgextra/i2/2544775745/TB22MpBmJzJ8KJjSspkXXbF7VXa_!!2544775745-2-beehive-scenes.png_300x300.jpg'}]], id:1, title:'每日精选'},
+            {data:[[{title:'中长款羽绒服', id:0, image:'https://img.alicdn.com/imgextra/i1/3075307584/TB2eg00mRDH8KJjy1zeXXXjepXa_!!3075307584-0-daren.jpg_300x300.jpg'},{title:'高跟鞋',id:1,image:'https://img.alicdn.com/imgextra/i4/261832618/TB2flJlmSYH8KJjSspdXXcRgVXa_!!261832618-0-beehive-scenes.jpg_300x300.jpg'},{title:'英伦切尔西靴',id:2, image:'https://img.alicdn.com/imgextra/i2/2564660119/TB22vm4bPb.heNjSZFAXXchKXXa_!!2564660119-0-beehive-scenes.jpg_300x300.jpg'},{title:'艺术茶盘',id:3, image:'https://img.alicdn.com/imgextra/i2/2544775745/TB22MpBmJzJ8KJjSspkXXbF7VXa_!!2544775745-2-beehive-scenes.png_300x300.jpg'}]], id:2, title:'热卖单品'},
         ];
         this.state = {
             dataSource:array,
@@ -35,7 +35,7 @@ export default class ShopView extends Component {
 
     renderExpenseItem(item,i) {
         return (
-            <TouchableOpacity onPress={() => this._onPress(item)}>
+            <TouchableOpacity onPress={() => this._onPress(item)} key={i}>
                 <View style={styles.itemContainer}>
                     <Image style={styles.itemImage} source={{uri:item.image}} resizeMode="cover"/>
                     <Text style={{fontSize:12,marginTop:10,color:'black'}} numberOfLines={1}>{item.title}</Text>
@@ -87,24 +87,22 @@ const styles = StyleSheet.create({
     sectionHeaderText:{
         marginLeft:10,
         fontSize:20,
-        color:'blue'
+        color:'black'
     },
     itemContainer:{
         width: ScreenWidth / 2,
         height: ScreenWidth / 2 + 20,
         justifyContent:'center',
         alignItems:'center',
-        borderWidth:1
     },
     itemImage:{
         width: ScreenWidth / 2 - 20,
         height: ScreenWidth / 2 - 20,
-        backgroundColor:'red'
+        backgroundColor:'cyan'
     },
     list: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        // alignItems: 'flex-start',
         backgroundColor: '#FFFFFF',
     },
 
