@@ -15,6 +15,8 @@ var _titleFlatList;
 import NewViewItem from './NewViewItem';
 import Log from 'react-native-log';
 
+var listDataSource = [];
+
 export default class NewView extends Component {
 
     constructor(props) {
@@ -29,21 +31,25 @@ export default class NewView extends Component {
             {id:6,title:'媒体'},
             {id:7,title:'腾讯'},
             {id:8,title:'NBA'}];
-        let listArray = [
-            {id:0,backgroundColor:'#123456'},
-            {id:1,backgroundColor:'#003456'},
-            {id:2,backgroundColor:'#111456'},
-            {id:3,backgroundColor:'#177456'},
-            {id:4,backgroundColor:'#881456'},
-            {id:5,backgroundColor:'#116666'},
-            {id:6,backgroundColor:'#321456'},
-            {id:7,backgroundColor:'#752321'},
-            {id:8,backgroundColor:'#426890'}];
         this.state = {
             titleDataSource: titleArray,
-            listDataSource:listArray,
+            listDataSource:null,
             currentPage:0,
         }
+    }
+
+    componentWillMount() {
+        fetch('https://news-at.zhihu.com/api/3/news/latest')
+            .then((response) => response.json())
+            .then((data) => data.stories)
+            .then((data) => {
+                listDataSource.push(data);
+                listDataSource.push(data);
+                this.setState({newListData:listDataSource});
+            })
+            .catch((error) => {
+                Log.e(error);
+            })
     }
 
     _renderItem = ({item}) => {
@@ -71,7 +77,7 @@ export default class NewView extends Component {
 
     _renderListItem = ({item}) => {
         return(
-            <NewViewItem style={{width:ScreenWidth,height:ScreenHeight - 30 - 88,backgroundColor:item.backgroundColor}}>
+            <NewViewItem data={item} style={{width:ScreenWidth,height:ScreenHeight - 30 - 88}}>
                 {/*<Text>{item.id}</Text>*/}
             </NewViewItem>
         )
@@ -97,19 +103,23 @@ export default class NewView extends Component {
                               showsVerticalScrollIndicator={false}
                     />
                 </View>
-                <View style={{flex:1,backgroundColor:'orange'}}>
-                    <FlatList style={{flex:1}}
-                              ref={(flatList) => { _flatList = flatList; }}
-                              data={this.state.listDataSource}
-                              renderItem={this._renderListItem}
-                              keyExtractor={(item,index) => item.id}
-                              horizontal={true}
-                              showsHorizontalScrollIndicator={false}
-                              showsVerticalScrollIndicator={false}
-                              pagingEnabled={true}
-                              onScroll={this._scroll}
-                    />
-                </View>
+                {
+                    this.state.newListData == null
+                        ? null
+                        : <View style={{flex:1,backgroundColor:'orange'}}>
+                            <FlatList style={{flex:1}}
+                                      ref={(flatList) => { _flatList = flatList; }}
+                                      data={this.state.newListData}
+                                      renderItem={this._renderListItem}
+                                      keyExtractor={(item,index) => "index"+index+item}
+                                      horizontal={true}
+                                      showsHorizontalScrollIndicator={false}
+                                      showsVerticalScrollIndicator={false}
+                                      pagingEnabled={true}
+                                      onScroll={this._scroll}
+                            />
+                        </View>
+                }
             </View>
         )
     }

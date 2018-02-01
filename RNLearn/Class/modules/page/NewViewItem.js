@@ -3,22 +3,34 @@ import {
     View,
     StyleSheet,
     Text,
-    FlatList
+    FlatList,
+    Image,
 } from 'react-native';
+
+import Log from 'react-native-log';
 
 export default class NewViewItem extends Component {
 
     constructor(props) {
         super(props);
-        var array = [{id:0},{id:1},{id:2},{id:3},{id:4},{id:5},{id:6},{id:7},{id:8},{id:9}];
         this.state = {
-            listDataSource:array
+            data:this.props.data,
         }
+    }
+
+    componentDidMount() {
+        Log.i(JSON.stringify(this.state.data));
     }
 
     _renderItem = ({item}) => {
         return (
-            <View style={{width:ScreenWidth, height:200,borderWidth:1,borderColor:'cyan'}}>
+            <View style={{width:ScreenWidth, height:100,borderWidth:1,borderColor:'cyan',flexDirection:'row'}}>
+                <View style={{width:100,height:100, justifyContent:'center', alignItems:'center'}}>
+                    <Image style={{width: 80,height: 80}} source={{uri:item.images[0]}}></Image>
+                </View>
+                <View style={{flex:1,justifyContent:'center'}}>
+                    <Text style={{fontSize:16}}>{item.title}</Text>
+                </View>
             </View>
         )
     };
@@ -27,9 +39,9 @@ export default class NewViewItem extends Component {
         return (
             <View style={styles.container}>
                 <FlatList style={styles.container}
-                          data={this.state.listDataSource}
+                          data={this.state.data}
                           renderItem={this._renderItem}
-                          keyExtractor={(item,index) => item.id}
+                          keyExtractor={(item,index) => "index"+index+item}
                 />
 
             </View>
