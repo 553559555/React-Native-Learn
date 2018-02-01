@@ -5,9 +5,11 @@ import {
     StyleSheet,
     SectionList,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    FlatList,
 } from 'react-native';
 
+import ShopHeaderView from './ShopHeaderView';
 import Log from 'react-native-log'
 var defaultImage = require('../../../src/default.png');
 
@@ -16,13 +18,23 @@ export default class ShopView extends Component {
     constructor(props) {
         super(props);
         //数据源
-        var array = [
+        let titleArray = [
+            {title:'美食', image:'meishi'},
+            {title:'旅游', image:'lvyou'},
+            {title:'外卖', image:'waimai'},
+            {title:'酒店', image:'jiudian'},
+            {title:'附近', image:'fujin'},
+            {title:'运动', image:'yundong'},
+            {title:'电影', image:'dianying'},
+        ];
+        let array = [
             {data:[[{title:'中长款羽绒服', id:0, image:'https://img.alicdn.com/imgextra/i1/3075307584/TB2eg00mRDH8KJjy1zeXXXjepXa_!!3075307584-0-daren.jpg_300x300.jpg'},{title:'高跟鞋',id:1,image:'https://img.alicdn.com/imgextra/i4/261832618/TB2flJlmSYH8KJjSspdXXcRgVXa_!!261832618-0-beehive-scenes.jpg_300x300.jpg'},{title:'英伦切尔西靴',id:2, image:'https://img.alicdn.com/imgextra/i2/2564660119/TB22vm4bPb.heNjSZFAXXchKXXa_!!2564660119-0-beehive-scenes.jpg_300x300.jpg'},{title:'艺术茶盘',id:3, image:'https://img.alicdn.com/imgextra/i2/2544775745/TB22MpBmJzJ8KJjSspkXXbF7VXa_!!2544775745-2-beehive-scenes.png_300x300.jpg'}]], id:0, title:'热门推荐'},
             {data:[[{title:'鸭舌太阳帽', id:0, image:'https://img.alicdn.com/bao/uploaded/i4/550754161/TB1vXwdcwLD8KJjSszeXXaGRpXa_!!0-item_pic.jpg_430x430q90.jpg'},{title:'韩版太阳帽',id:1,image:'https://img.alicdn.com/imgextra/i1/2972205798/TB2F47Dk3JkpuFjSszcXXXfsFXa_!!2972205798.jpg_430x430q90.jpg'},{title:'棒球服',id:2, image:'https://gd1.alicdn.com/imgextra/i1/1775513185/TB2vnqdfl0kpuFjSsppXXcGTXXa_!!1775513185.jpg_400x400.jpg'},{title:'粗毛线外穿',id:3, image:'https://gd2.alicdn.com/imgextra/i2/0/TB1P7eBbdPJ3eJjSZFLXXab3FXa_!!0-item_pic.jpg_400x400.jpg'}]], id:1, title:'每日精选'},
             {data:[[{title:'飞人乔丹帽',id:4, image:'https://gw.alicdn.com/bao/uploaded/i1/890482188/TB20eUpdkfb_uJkSmRyXXbWxVXa_!!890482188.jpg_460x460xz.jpg'}]], id:2, title:'热卖单品'},
         ];
         this.state = {
-            dataSource:array,
+            dataSource: array,
+            dataArray:titleArray
         };
     }
 
@@ -64,6 +76,13 @@ export default class ShopView extends Component {
         )
     };
 
+
+    _renderHeaderView(dataArray) {
+        return (
+            <ShopHeaderView style={{width:ScreenWidth,height:160}} array={dataArray} />
+        )
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -72,6 +91,7 @@ export default class ShopView extends Component {
                              renderItem={this._renderItem}                          //当前一组item的样式
                              renderSectionHeader={this._renderSectionHeaderItem}    //头部样式
                              keyExtractor={(item,index) => item.id}                 //标识
+                             ListHeaderComponent={this._renderHeaderView(this.state.dataArray)}
                 />
             </View>
         )
