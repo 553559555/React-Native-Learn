@@ -1,3 +1,13 @@
+/**
+ *
+ * 商城头部视图
+ * 创建人：arther
+ * QQ：553559555
+ * Email：artheremail@163.com
+ * 时间：2018/02/02
+ *
+ */
+
 import React, { Component } from 'react';
 import {
     Text,

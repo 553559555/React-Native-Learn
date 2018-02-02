@@ -1,6 +1,6 @@
 /**
  *
- * App的我的页面
+ * 我的页面
  * 创建人：arther
  * QQ：553559555
  * Email：artheremail@163.com
