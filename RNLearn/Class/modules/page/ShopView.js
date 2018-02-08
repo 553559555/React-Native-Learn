@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     sectionHeaderText:{
         marginLeft:10,
         fontSize:20,
-        color:'black'
+        color:'black',
     },
     itemContainer:{
         width: ScreenWidth / 2,
