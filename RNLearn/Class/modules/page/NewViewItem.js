@@ -16,7 +16,6 @@ import {
     Image,
 } from 'react-native';
 
-import Log from 'react-native-log';
 
 export default class NewViewItem extends Component {
 
@@ -28,7 +27,7 @@ export default class NewViewItem extends Component {
     }
 
     componentDidMount() {
-        Log.i(JSON.stringify(this.state.data));
+
     }
 
     _renderItem = ({item}) => {

@@ -18,7 +18,6 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import Log from 'react-native-log';
 
 export default class FlatListView extends Component {
 

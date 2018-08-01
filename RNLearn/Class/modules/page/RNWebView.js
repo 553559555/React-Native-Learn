@@ -17,7 +17,7 @@ import {
     Dimensions
 } from 'react-native';
 
-import Log from 'react-native-log';
+
 let {width,height} = Dimensions.get('window');
 
 export default class RNWebView extends Component {
@@ -31,7 +31,7 @@ export default class RNWebView extends Component {
     }
 
     componentDidMount() {
-        Log.i(this.state.content);
+
     }
 
     render() {

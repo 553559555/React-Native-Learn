@@ -19,7 +19,6 @@ import {
 } from 'react-native';
 
 import ShopHeaderView from './ShopHeaderView';
-import Log from 'react-native-log'
 var defaultImage = require('../../../src/default.png');
 
 export default class ShopView extends Component {

@@ -17,7 +17,7 @@ import {
     View
 } from 'react-native';
 
-import Log from 'react-native-log';
+
 
 export default class ShopHeaderView extends Component {
 
@@ -29,7 +29,6 @@ export default class ShopHeaderView extends Component {
     }
 
     _flatListItem = ({item}) => {
-        Log.i(item.image);
         return (
             <View style={{width:ScreenWidth / 4, height: 80, justifyContent:'center', alignItems:'center'}}>
                 <Image style={{width:ScreenWidth / 4 / 2, height: ScreenWidth / 4 / 2}} source={{uri:item.image}}/>

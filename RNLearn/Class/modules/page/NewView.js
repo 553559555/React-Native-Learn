@@ -22,7 +22,6 @@ var _flatList;
 var _titleFlatList;
 
 import NewViewItem from './NewViewItem';
-import Log from 'react-native-log';
 
 var listDataSource = [];
 
@@ -57,7 +56,7 @@ export default class NewView extends Component {
                 this.setState({newListData:listDataSource});
             })
             .catch((error) => {
-                Log.e(error);
+
             })
     }
 
@@ -94,7 +93,6 @@ export default class NewView extends Component {
 
     _scroll(e) {
         // var currentIndex = Math.round(e.nativeEvent.contentOffset.x / ScreenWidth);
-        Log.e('123123/'+Math.round(e.nativeEvent.contentOffset.x / ScreenWidth));
         // this.setState({currentPage:});
     };
 
